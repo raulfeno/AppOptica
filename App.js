@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
+import TerapiaVisual from './TerapiaVisual';
+import Progresivos from './Progresivos';
+import Audiologia from './Audiologia';
+import Lentillas from './Lentillas';
+import Home from './Home'
+import Login from './Login'
+
+const Drawer = createDrawerNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer ScreenOptions={{ headerShown: false }}>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Terapia Visual" component={TerapiaVisual} />
+        <Drawer.Screen name="Progresivos" component={Progresivos} />
+        <Drawer.Screen name="Audiologia" component={Audiologia} />
+        <Drawer.Screen name="Lentillas" component={Lentillas} />
+        <Drawer.Screen name="Login" component={Login} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
